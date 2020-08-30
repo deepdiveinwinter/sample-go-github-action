@@ -8,11 +8,10 @@ import (
 var (
 	DoorayHookUrlKey  = "DOORAY_HOOK_URL"
 	DoorayBotName     = "HelloWorldBot"
-	DoorayBotImageUrl = "https://static.dooray.com/static_images/dooray-bot.png"
+	DoorayBotImageUrl = "https://github.com/deepdiveinwinter/dooray-bot/blob/master/images/pensu.jpg?raw=true"
 )
 
 func main() {
-
 	doorayHookUrl := os.Getenv(DoorayHookUrlKey)
 
 	hookClient := clients.NewHookClient(doorayHookUrl, DoorayBotName, DoorayBotImageUrl)

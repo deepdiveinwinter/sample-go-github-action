@@ -20,7 +20,7 @@ type DoorayHookClient struct {
 
 type DoorayMessage struct {
 	BotName         string             `json:"botName"`
-	BotIconImageUrl string             `json:"botIconImageUrl"`
+	BotIconImageUrl string             `json:"botIconImage"`
 	Text            string             `json:"text"`
 	Attachments     []DoorayAttachment `json:"attachments"`
 }
@@ -47,7 +47,11 @@ func (d *DoorayHookClient) SendMessage(message DoorayMessage) error {
 
 	// Encoding Dooray Message
 	reqBodyBuff := new(bytes.Buffer)
-	json.NewEncoder(reqBodyBuff).Encode(message)
+	err := json.NewEncoder(reqBodyBuff).Encode(message)
+	if err != nil {
+		logrus.Errorf("fail to encode dooray message, error=%s", err.Error())
+		return err
+	}
 
 	// Request POST
 	resp, err := http.Post(d.url, HttpHeader, reqBodyBuff)
