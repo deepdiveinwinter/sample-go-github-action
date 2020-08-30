@@ -1,0 +1,17 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: dooray-bot
+spec:
+  schedule: "*/1 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: dooray-bot
+              image: deepdiveinwinter/dooraybot:v1.0
+              env:
+                - name: DOORAY_HOOK_URL
+                  value: https://hook.dooray.com/services/{{SERVICE_HOOK}}
+          restartPolicy: OnFailure
