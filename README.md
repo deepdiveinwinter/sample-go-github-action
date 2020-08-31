@@ -1,6 +1,7 @@
 # Dooray Messenger Bot Client
 
 Dooray Incoming Hook을 사용해 Dooray Bot이 메세지를 보내도록 할 수 있습니다.
+
 매주 주기적으로 보내야하는 공지사항을 자동화하기 위해 만들어졌습니다.
  
 ## 개발 환경 구성
@@ -20,6 +21,7 @@ make build-image
 ```
 
 빌드된 이미지를 기반으로 컨테이너를 생성해 메세지를 발송한다.
+
 만약 dooray-bot이라는 이름의 컨테이너가 기존에 존재할 경우, 해당 컨테이너를 자동 삭제하고 재생성한다.
 ```
 make run
@@ -34,7 +36,8 @@ make push-image
 
 dooray-bot  컨테이너 이미지를 Job 또는 CronJob으로 등록해 메세지를 보낸다.
 
-예제) 매일 월요일 오전 10시에 특정 메세지를 발송하도록 CronJob 등록
+예제) 매 주 월요일 오전 10시에 특정 메세지를 발송하도록 CronJob 등록
+
 ```yaml
 apiVersion: batch/v1beta1
 kind: CronJob
