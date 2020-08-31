@@ -10,9 +10,9 @@ Dooray Incoming Hook을 사용해 Dooray Bot이 메세지를 보내도록 할 �
 
 ## 로컬 개발 환경에서 실행하는 방법
 
-Makefile에 DOORAY_HOOK_URL 값을 수정한다.
+Makefile에 **DOORAY_HOOK_URL** 값을 수정한다.
 ```
-DOORAY_HOOK_URL="https://hook.dooray.com/services/{{SERVICE_HOOK}"
+DOORAY_HOOK_URL="https://hook.dooray.com/services/{SERVICE_HOOK}"
 ```
 
 make 명령어를 사용해 docker 이미지를 빌드한다.
@@ -23,18 +23,20 @@ make build-image
 빌드된 이미지를 기반으로 컨테이너를 생성해 메세지를 발송한다.
 
 만약 dooray-bot이라는 이름의 컨테이너가 기존에 존재할 경우, 해당 컨테이너를 자동 삭제하고 재생성한다.
+
+dooray-bot 컨테이너는 메세지 1회 발송 후 Exit (0)을 리턴하며 정상 종료된다.
 ```
 make run
 ```
 
-컨테이너를 통해 Dooray bot 메세지가 정상적으로 도착했다면, 해당 이미지를 Docker Hub에 등록한다.
+컨테이너를 통해 Dooray 메세지가 정상적으로 도착했다면, 해당 이미지를 Docker Hub에 등록한다.
 ```
 make push-image
 ```
 
 ## Kubernetes 개발 환경에서 실행하는 방법
 
-dooray-bot  컨테이너 이미지를 Job 또는 CronJob으로 등록해 메세지를 보낸다.
+dooray-bot 컨테이너 이미지를 Job 또는 CronJob으로 생성해 메세지를 보낸다.
 
 예제) 매 주 월요일 오전 10시에 특정 메세지를 발송하도록 CronJob 등록
 
