@@ -21,5 +21,5 @@ run: clean
 
 .PHONY: clean
 clean:
-	@echo "Clean  dooray-bot container..."
+	@echo "Clean dooray-bot container..."
 	@docker rm -f dooray-bot
