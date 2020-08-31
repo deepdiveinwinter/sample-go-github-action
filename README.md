@@ -56,6 +56,6 @@ spec:
               image: deepdiveinwinter/dooraybot:{version}
               env:
                 - name: DOORAY_HOOK_URL
-                  value: https://hook.dooray.com/services/{{SERVICE_HOOK}
+                  value: https://hook.dooray.com/services/{SERVICE_HOOK}
           restartPolicy: OnFailure
 ```
