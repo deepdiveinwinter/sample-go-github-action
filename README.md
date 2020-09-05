@@ -37,7 +37,7 @@ make push-image
 ## Kubernetes 개발 환경에서 실행하는 방법
 
 dooray-bot 컨테이너 이미지를 Job 또는 CronJob으로 생성해 메세지를 보낸다.
-** CronJob Schedule 시간 대 설정 시 kube-controller-manager의 TimeZone을 기준으로 해당 이벤트가 발생한다. **
+**CronJob Schedule 시간 대 설정 시 kube-controller-manager의 TimeZone을 기준으로 해당 이벤트가 발생한다.**
 
 예제) 매 주 월요일 오전 10시에 특정 메세지를 발송하도록 CronJob 등록
 
